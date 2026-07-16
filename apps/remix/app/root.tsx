@@ -19,7 +19,7 @@ import {
   useLoaderData,
   useMatches,
 } from 'react-router';
-import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
+import { PreventFlashOnWrongTheme, Theme, ThemeProvider, useTheme } from 'remix-themes';
 
 import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
@@ -90,10 +90,8 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { theme } = useLoaderData<typeof loader>() || {};
-
   return (
-    <ThemeProvider specifiedTheme={theme} themeAction="/api/theme">
+    <ThemeProvider specifiedTheme={Theme.LIGHT} themeAction="/api/theme">
       <LayoutContent>{children}</LayoutContent>
     </ThemeProvider>
   );
@@ -111,7 +109,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
 
   const [theme] = useTheme();
 
-  // Recipient routes (signing pages) put `documenso-branded` on <body> so the
+  // Recipient routes (signing pages) put `nyxsentinel-branded` on <body> so the
   // <style> block from `RecipientBranding` applies to BOTH the main tree and
   // any portaled content (Radix dialogs/popovers/dropdowns mount outside the
   // route tree, attached directly to document.body).
@@ -120,9 +118,8 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
 
   return (
     // `suppressHydrationWarning` because `remix-themes` intentionally mutates
-    // `data-theme`/`class` on <html> before hydration (PreventFlashOnWrongTheme),
-    // so the server-rendered attributes never match the client render when the
-    // theme is resolved from the system preference. Attribute-only, one level deep.
+    // `data-theme`/`class` on <html> before hydration (PreventFlashOnWrongTheme).
+    // Attribute-only, one level deep.
     <html translate="no" lang={lang} data-theme={theme} className={theme ?? ''} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
@@ -149,14 +146,14 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         {/* Fix: https://stackoverflow.com/questions/21147149/flash-of-unstyled-content-fouc-in-firefox-only-is-ff-slow-renderer */}
         <script nonce={nonce(cspNonce)}>0</script>
       </head>
-      <body className={isRecipientRoute ? 'documenso-branded' : undefined}>
+      <body className={isRecipientRoute ? 'nyxsentinel-branded' : undefined}>
         {/* Global license banner currently disabled. Need to wait until after a few releases. */}
         {/* {licenseStatus === '?' && (
           <div className="bg-destructive text-destructive-foreground">
             <div className="mx-auto flex h-auto max-w-screen-xl items-center justify-center px-4 py-3 text-sm font-medium">
               <div className="flex items-center">
                 <AlertTriangleIcon className="mr-2 h-4 w-4" />
-                <Trans>This is an expired license instance of Documenso</Trans>
+                <Trans>This is an expired license instance of NyxSentinel</Trans>
               </div>
             </div>
           </div>

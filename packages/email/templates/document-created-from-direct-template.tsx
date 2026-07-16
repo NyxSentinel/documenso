@@ -5,7 +5,6 @@ import { Trans } from '@lingui/react/macro';
 import { RecipientRole } from '@prisma/client';
 
 import { Body, Button, Container, Head, Html, Preview, Section, Text } from '../components';
-import { TemplateBrandingLogo } from '../template-components/template-branding-logo';
 import TemplateDocumentImage from '../template-components/template-document-image';
 import { TemplateFooter } from '../template-components/template-footer';
 
@@ -39,8 +38,6 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
         <Section className="bg-background">
           <Container className="mx-auto mt-8 mb-2 max-w-xl rounded-lg border border-border border-solid p-2 backdrop-blur-sm">
             <Section className="p-2">
-              <TemplateBrandingLogo assetBaseUrl={assetBaseUrl} className="mb-4 h-6" />
-
               <TemplateDocumentImage className="mt-6" assetBaseUrl={assetBaseUrl} />
 
               <Section>

@@ -1,0 +1,21 @@
+NyxSentinel — Modified Version Notice
+======================================
+
+This software is a modified version of Documenso
+(https://github.com/documenso/documenso), originally developed by
+Documenso, Inc. and licensed under the GNU Affero General Public
+License, Version 3 (AGPL-3.0).
+
+Modifications were made by the NyxSentinel project, beginning July 2026.
+The modifications include rebranding (name, logos, color scheme, email
+addresses) and configuration changes for deployment as NyxSentinel.
+
+The original copyright and license of Documenso are preserved in the
+LICENSE file in this repository. This modified version is also released
+under AGPL-3.0.
+
+Source code for this modified version is available at:
+  [INSERT YOUR REPOSITORY URL HERE]
+
+For the original unmodified Documenso source, see:
+  https://github.com/documenso/documenso

@@ -283,7 +283,7 @@ export const DocumentSigningPageViewV2 = () => {
 
               {!hidePoweredBy && (
                 <a
-                  href="https://documenso.com"
+                  href="https://nyxsentinel.com"
                   target="_blank"
                   className="fixed right-0 bottom-0 z-40 hidden cursor-pointer rounded-tl bg-primary px-2 py-1 font-medium text-primary-foreground text-xs opacity-60 hover:opacity-100 lg:block"
                   rel="noopener"
@@ -294,6 +294,16 @@ export const DocumentSigningPageViewV2 = () => {
                   <BrandingLogo className="ml-2 inline-block h-[14px]" />
                 </a>
               )}
+
+              {/* AGPL-3.0 §13 source disclosure — must remain accessible to network users */}
+              <a
+                href="https://github.com/YOUR_ORG/nyxsentinel"
+                target="_blank"
+                rel="noopener"
+                className="fixed bottom-0 left-0 z-40 hidden px-2 py-1 text-muted-foreground text-xs opacity-40 hover:opacity-80 lg:block"
+              >
+                Source
+              </a>
             </div>
           </div>
         </div>

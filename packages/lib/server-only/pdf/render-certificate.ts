@@ -4,8 +4,6 @@ import type { Field, RecipientRole, Signature } from '@prisma/client';
 import { SigningStatus } from '@prisma/client';
 import Konva from 'konva';
 import 'konva/skia-backend';
-import fs from 'node:fs';
-import path from 'node:path';
 import { DateTime } from 'luxon';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
@@ -578,17 +576,14 @@ const renderBranding = async ({ qrToken, i18n }: { qrToken: string | null; i18n:
     height: brandingHeight,
   });
 
-  const logoPath = path.join(process.cwd(), 'public/static/logo.png');
-  const logo = fs.readFileSync(logoPath);
-
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const img = new SkiaImage(logo) as unknown as HTMLImageElement;
-
-  const documensoImage = new Konva.Image({
-    image: img,
+  const brandName = new Konva.Text({
+    x: text.width() + 6,
+    verticalAlign: 'middle',
+    text: 'NyxSentinel',
+    fontStyle: '700',
+    fontFamily: 'Inter',
+    fontSize: textSm,
     height: brandingHeight,
-    width: brandingHeight * (img.width / img.height),
-    x: text.width() + 16,
   });
 
   const qrSize = qrToken ? 72 : 0;
@@ -597,7 +592,7 @@ const renderBranding = async ({ qrToken, i18n }: { qrToken: string | null; i18n:
     y: qrSize + 16,
   });
   logoGroup.add(text);
-  logoGroup.add(documensoImage);
+  logoGroup.add(brandName);
 
   branding.add(logoGroup);
 

@@ -5,18 +5,14 @@ export interface TemplateDocumentImageProps {
   className?: string;
 }
 
-export const TemplateDocumentImage = ({ assetBaseUrl, className }: TemplateDocumentImageProps) => {
-  const getAssetUrl = (path: string) => {
-    return new URL(path, assetBaseUrl).toString();
-  };
-
+export const TemplateDocumentImage = ({ className }: TemplateDocumentImageProps) => {
   return (
     <Section className={className}>
       <Row className="table-fixed">
         <Column />
 
         <Column>
-          <Img className="mx-auto h-42" src={getAssetUrl('/static/document.png')} alt="Documenso" />
+          <Img className="mx-auto h-42" src="https://static.nyxsentinel.com/website/emblem.png" alt="NyxSentinel" />
         </Column>
 
         <Column />
